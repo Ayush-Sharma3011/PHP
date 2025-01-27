@@ -1,4 +1,4 @@
-<?php
+<!-- 
   // echo ("<h1> Hello World! </h1>");
   // $a = 43;
   // $b = 'hi';
@@ -141,32 +141,61 @@
 
   // $input1 = readline("Enter your name: ");
   // echo $input1;
-   echo "<br>";
-  $day = date("D");
+  //  echo "<br>";
+  // $day = date("D");
   
-  switch ($day) {
-      case "Mon":
-          echo "Today is Monday";
-          break;
-      case "Tue":
-          echo "Today is Tuesday";
-          break;
-      case "Wed":
-          echo "Today is Wednesday";
-          break;
-      case "Thu":
-          echo "Today is Thursday";
-          break;
-      case "Fri":
-          echo "Today is Friday";
-          break;
-      case "Sat":
-          echo "Today is Saturday";
-          break;
-      case "Sun":
-          echo "Today is Sunday";
-          break;
-      default:
-          echo "Invalid day";
+  // switch ($day) {
+  //     case "Mon":
+  //         echo "Today is Monday";
+  //         break;
+  //     case "Tue":
+  //         echo "Today is Tuesday";
+  //         break;
+  //     case "Wed":
+  //         echo "Today is Wednesday";
+  //         break;
+  //     case "Thu":
+  //         echo "Today is Thursday";
+  //         break;
+  //     case "Fri":
+  //         echo "Today is Friday";
+  //         break;
+  //     case "Sat":
+  //         echo "Today is Saturday";
+  //         break;
+  //     case "Sun":
+  //         echo "Today is Sunday";
+  //         break;
+  //     default:
+  //         echo "Invalid day";
+  // }
+  // echo "<br>"; -->
+
+    <!DOCTYPE html>
+  <html>
+  <head>
+      <title>Form Input</title>
+  </head>
+  <body>
+  
+  <form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+    Name: <input type="text" name="name">
+    <input type="submit">
+  </form>
+  
+  <?php
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      // collect value of input field
+      $name = htmlspecialchars($_POST['name']);
+      if (empty($name)) {
+          echo "Name is empty";
+      } else {
+          echo "Hello, " . $name;
+      }
   }
-?>
+  ?>
+  
+  </body>
+  </html>
+  
+
