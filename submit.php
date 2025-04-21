@@ -1,11 +1,16 @@
 <?php
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $age = $_POST['age'];
+include 'database.php';
+if (isset($_post['submit'])){
+    $uname = $_post['username'];
+    $password = $_post['password'];
 
-        if ($age >= 18) {
-            echo "You are eligible.";
-        } else {
-            echo "You are not eligible.";
-        }
+    $query = "SELECT * FROM users WHERE username='$uname' AND password='$password'";
+    $result = mysqli_query($con, $sql);
+    if (mysqli_num_rows($que) >0 ){
+        echo " <script>alert('login ok ')</script>";
+        echo " <script>window.open('insert.php','_self')</script>";
+    }else{
+        echo " <script>alert('login failed ')</script>";
+        echo " <script>window.open('login.php','_self')</script>";
     }
-    ?>
+}
